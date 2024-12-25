@@ -238,22 +238,37 @@
             let message = '';
             switch (errorNumber) {
                 case '00':
-                    message = 'No errors detected. System is functioning normally.';
+                    message = 'All Good';
                     break;
                 case '01':
-                    message = 'NIC initialization error. Please check the configuration.';
+                    message = 'Meter NIC communication failure';
                     break;
                 case '02':
-                    message = 'Connection lost. Attempting to reconnect.';
+                    message = 'Modem intialization faiure';
                     break;
                 case '03':
-                    message = 'Firmware update required. Contact support.';
+                    message = 'SIM not detected';
                     break;
                 case '04':
-                    message = 'Firmware update required. Contact support.';
+                    message = 'SIM invalid.';
                     break;
                 case '05':
-                    message = 'Firmware update required. Contact support.';
+                    message = 'No GSM Network Coverage';
+                    break;
+                case '06':
+                    message = 'GPRS Network registration failure';
+                    break;
+                case '07':
+                    message = 'GPRS registration denied';
+                    break;
+                case '08':
+                    message = 'No APN Configured';
+                    break;
+                case '09':
+                    message = 'GPRS connection not establish';
+                    break;
+                 case '10':
+                    message = 'HES IP/Port not configured';
                     break;
                 default:
                     message = `Error code ${errorNumber} encountered. Refer to the troubleshooting guide.`;
