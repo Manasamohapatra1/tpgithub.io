@@ -6,13 +6,13 @@
     <title>Meter Selection</title>
     <style>
         body {
-            border :#0056b3;
-            border-width: 23px;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
             scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            width: 100%;
         }
 
         .navbar {
@@ -27,6 +27,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
         .navbar a {
@@ -42,6 +43,51 @@
             background-color: #e00e0e;
         }
 
+        .navbar .menu {
+            display: flex;
+        }
+
+        .navbar .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+        }
+
+        /* Responsive Navbar */
+        @media screen and (max-width: 768px) {
+            .navbar .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                gap: 10px;
+                margin-top: 60px;
+            }
+
+            .navbar .menu.active {
+                display: flex;
+            }
+
+            .navbar .hamburger {
+                display: flex;
+            }
+
+            .navbar a {
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+            }
+        }
+
         .image-container {
             display: flex;
             justify-content: center;
@@ -50,7 +96,6 @@
 
         .container {
             background: #195BAF;
-
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -115,64 +160,86 @@
         }
 
         #about {
-    padding: 40px;
-    text-align: justify; /* Justify the text for a clean appearance */
-    margin-top: 50px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: #195BAF; /* Set a clean background color */
-}
+            padding: 40px;
+            text-align: justify;
+            margin-top: 50px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #195BAF;
+        }
 
-#about h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #ffffff; /* Update to a softer red tone */
-    text-align: center; /* Center-align the heading */
-}
+        #about h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-align: center;
+        }
 
-#about p {
-    font-size: 1.2em;
-    color: #ffffff; /* Use a darker gray for better readability */
-    line-height: 1.8; /* Increase line height for better spacing */
-    margin-bottom: 20px; /* Add spacing between paragraphs */
-}
+        #about p {
+            font-size: 1.2em;
+            color: #ffffff;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
 
-
-        #contact-us {
+        footer {
             background-color: #333;
             color: white;
             padding: 20px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 300px;
-            text-align: left;
+            text-align: center;
             border-radius: 8px 8px 0 0;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        #contact-us h3 {
+        footer h3 {
             font-size: 1.2em;
             margin-top: 0;
             margin-bottom: 10px;
         }
 
-        #contact-us p {
+        footer p {
             font-size: 1em;
             margin: 5px 0;
             line-height: 1.4;
+        }
+
+        /* Mobile adjustments */
+        @media screen and (max-width: 768px) {
+            
+            .container {
+                width: 100%; /* Make the container take up more width on mobile */
+                margin:40px; /* Add margin for spacing */
+                padding: 20px; /* Reduce padding for mobile */
+            }
+
+            #about {
+                padding: 20px;
+                width: 100%; /* Make the about section take up more width */
+                margin: 40px; /* Center the about section */
+            }
+            footer{
+                width: 100%;
+                margin: 40px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact-us">Contact Us</a>
-        <a href="#services">Services</a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact Us</a>
+            <a href="#services">Services</a>
+        </div>
     </div>
 
     <!-- Home Section -->
@@ -211,17 +278,14 @@
         </p>
     </div>
 
-    
-
-    <!-- Contact Us Section -->
-    <div id="contact-us">
+    <!-- Footer Section -->
+    <footer id="contact">
         <h3>Contact Us</h3>
-        <p></p>
-        <p>1.Mr Vipin Vyas (7987247925)</p>
-        <p>2.Mr Shreyansh Panda (8763137262)</p>
-        <p>3.Ms Rinki Kumari (8102667600)</p>
-        <p>4.Ms Anindita Das (8144033860)</p>
-    </div>
+        <p>1. Mr Vipin Vyas (7987247925)</p>
+        <p>2. Mr Shreyansh Panda (8763137262)</p>
+        <p>3. Ms Rinki Kumari (8102667600)</p>
+        <p>4. Ms Anindita Das (8144033860)</p>
+    </footer>
 
     <script>
         let clickCount = 0; // Counter to track button clicks
@@ -233,67 +297,66 @@
             if (meterMake === "hpl" && meterPhase === "1-phase") {
                 clickCount++; // Increment the counter if conditions are met
                 if (clickCount === 1) {
-                    // Open a new webpage when clicked 56 times
                     window.location.href = "sub1.html"; // Replace with the desired URL
                     clickCount = 0; // Reset the counter
                 } else {
                     document.getElementById('count-message').innerText = `Press the Push Button 56 times. Click count: ${clickCount}`;
                 }
             } else if (meterMake === "hpl" && meterPhase === "3-phase-wc") {
-                clickCount++; // Increment the counter if conditions are met
+                clickCount++;
                 if (clickCount === 1) {
-                    // Open a new webpage when clicked 56 times
                     window.location.href = "sub2.html"; // Replace with the desired URL
                     clickCount = 0; // Reset the counter
                 } else {
                     document.getElementById('count-message').innerText = `Press the down Button for 3rd time Click count: ${clickCount}`;
                 }
-            }   else if (meterMake === "hpl" && meterPhase === "3-phase-ltct") {
-                clickCount++; // Increment the counter if conditions are met
+            } else if (meterMake === "hpl" && meterPhase === "3-phase-ltct") {
+                clickCount++;
                 if (clickCount === 1) {
-                    // Open a new webpage when clicked 56 times
                     window.location.href = "sub2.html"; // Replace with the desired URL
                     clickCount = 0; // Reset the counter
                 } else {
                     document.getElementById('count-message').innerText = `Press the down Button for 3rd time Click count: ${clickCount}`;
                 }
-
             } else if (meterMake === "genus" && meterPhase === "3-phase-wc") {
-                clickCount++; // Increment the counter if conditions are met
+                clickCount++;
                 if (clickCount === 1) {
-                    // Open a new webpage when clicked 56 times
                     window.location.href = "sub3.html"; // Replace with the desired URL
                     clickCount = 0; // Reset the counter
                 } else {
                     document.getElementById('count-message').innerText = `hold the down Button for 30 secs:`;
                 }
-            }  else if (meterMake === "genus" && meterPhase === "1-phase") {
-                clickCount++; // Increment the counter if conditions are met
+            } else if (meterMake === "genus" && meterPhase === "1-phase") {
+                clickCount++;
                 if (clickCount === 1) {
-                    // Open a new webpage when clicked 56 times
                     window.location.href = "sub3.html"; // Replace with the desired URL
                     clickCount = 0; // Reset the counter
                 } else {
                     document.getElementById('count-message').innerText = `hold the down Button for 30 secs:`;
                 }
-
-            }  else if (meterMake === "genus" && meterPhase === "3-phase-ltct") {
-                clickCount++; // Increment the counter if conditions are met
+            } else if (meterMake === "genus" && meterPhase === "3-phase-ltct") {
+                clickCount++;
                 if (clickCount === 1) {
-                    // Open a new webpage when clicked 56 times
                     window.location.href = "sub3.html"; // Replace with the desired URL
                     clickCount = 0; // Reset the counter
                 } else {
                     document.getElementById('count-message').innerText = `hold the down Button for 30 secs`;
                 }
-            
             } else {
                 alert(`You selected:\nMeter Make: ${meterMake}\nMeter Phase: ${meterPhase}`);
                 clickCount = 0; // Reset the counter if other options are selected
                 document.getElementById('count-message').innerText = ""; // Clear the count message
-            } 
-            
+            }
+        }
+
+        // Toggle the mobile menu
+        function toggleMenu() {
+            const menu = document.querySelector('.navbar .menu');
+            const body = document.body;
+            menu.classList.toggle('active');
+            body.classList.toggle('no-scroll'); // Disable body scrolling when menu is open
         }
     </script>
 </body>
 </html>
+
