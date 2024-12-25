@@ -249,10 +249,30 @@
                 case '03':
                     message = 'SIM not detected';
                     break;
-
                 case '04':
                     message = 'SIM invalid.';
                     break;
+
+                case '05':
+                    message = 'No GSM Network Coverage';
+                    break;
+                case '07':
+                    message = 'GPRS Network registration failure';
+                    break;
+                case '08':
+                    message = 'GPRS registration denied';
+                    break;
+                case '09':
+                    message = 'No APN Configured';
+                    break;
+                case '10':
+                    message = 'GPRS connection not establish';
+                    break;
+                 case '11':
+                    message = 'HES IP/Port not configured';
+                    break;
+    
+                
                 default:
                     message = `Error code ${errorNumber} encountered. Refer to the troubleshooting guide.`;
                     break;
