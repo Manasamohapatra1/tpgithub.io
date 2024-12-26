@@ -15,7 +15,7 @@
         .header {
             text-align: center;
             padding: 20px;
-            background-color: #007bff;
+            background-color: #195BAF;
             color: #fff;
         }
         .back-button {
@@ -87,7 +87,7 @@
             padding: 10px 20px;
             font-size: 1em;
             color: #fff;
-            background-color: #0056b3;
+            background-color: #195BAF;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -125,7 +125,7 @@
             color: black;
             margin-top: 10px;
             padding: 15px;
-            border: 2px solid #0056b3;
+            border: 2px solid #195BAF;
             border-radius: 8px;
             background-color: #ffffff;
             text-align: center;
@@ -163,21 +163,7 @@
                     <option value="02">02</option>
                     <option value="03">03</option>
                     <option value="04">04</option>
-                    <option value="05">05</option>
-                    <option value="06">06</option>
-                    <option value="07">07</option>
-                    <option value="08">08</option>
-                    <option value="09">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="98">98</option>
+                    
                 </select>
             </div>
             <button class="submit-btn" onclick="submitSelection()">SUBMIT</button>
@@ -255,37 +241,19 @@
             let message = '';
             switch (errorNumber) {
                 case '00':
-                    message = ' ( NIC Faulty ) , Open ';
+                    message = '( NIC FAULTY ), 1)Open and Clean the NIC Card & SIM Card 2) Re-insert and wait for 15 min';
                     break;
                 case '01':
-                    message = 'Meter NIC communication failu';
+                    message = '( NIC FAULTY ), 1)Open and Clean the NIC Card & SIM Card 2) Re-insert and wait for 15 min';
                     break;
                 case '02':
-                    message = 'Modem intialization faiure';
+                    message = '( NIC FAULTY ), 1)Open and Clean the NIC Card & SIM Card 2) Re-insert and wait for 15 min';
                     break;
                 case '03':
-                    message = 'SIM not detected';
+                    message = '( NIC OK ), Wait for 15 mins more,RSSI value will be OK soon';
                     break;
                 case '04':
-                    message = 'SIM invalid.';
-                    break;
-                case '05':
-                    message = 'No GSM Network Coverage';
-                    break;
-                case '06':
-                    message = 'GPRS Network registration failure';
-                    break;
-                case '07':
-                    message = 'GPRS registration denied';
-                    break;
-                case '08':
-                    message = 'No APN Configured';
-                    break;
-                case '09':
-                    message = 'GPRS connection not establish';
-                    break;
-                 case '10':
-                    message = 'HES IP/Port not configured';
+                    message = '( NIC OK ), Meter Communicating';
                     break;
                 default:
                     message = `Error code ${errorNumber} encountered. Refer to the troubleshooting guide.`;
