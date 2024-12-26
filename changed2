@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR and RSSI Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #007bff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .column {
+            background-color: #007bff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            color: #fff;
+        }
+
+        .dropdown {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .dropdown label {
+            display: block;
+            font-size: 1em;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .dropdown select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #ffffff;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            color: #fff;
+            text-align: center;
+        }
+
+        .submit-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #0056b3;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #003f7f;
+        }
+
+        .troubleshoot {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #000000;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+        }
+
+        .troubleshoot h2 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .troubleshoot ul {
+            padding-left: 20px;
+        }
+
+        .troubleshoot li {
+            margin: 5px 0;
+        }
+
+        .message-box {
+            font-size: 1.5em;
+            color: black;
+            margin-top: 10px;
+            padding: 15px;
+            border: 2px solid #0056b3;
+            border-radius: 8px;
+            background-color: #ffffff;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="index.html" class="back-button">Back to Homepage</a>
+        <h1>ERROR and RSSI Status Dashboard</h1>
+    </div>
+
+    <!-- Image above the NIC and RSSI status -->
+    <div style="text-align:center; margin: 20px;">
+        <img src="Screenshot 2024-12-24 001719.png" alt="NIC and RSSI Status Image" style="max-width: 100%; height: auto;">
+    </div>
+
+    <div class="main-container">
+        <!-- NIC STATUS Section -->
+        <div class="column">
+            <h1>NIC STATUS</h1>
+            <div class="dropdown">
+                <label for="meter-make">NIC VALUE:</label>
+                <select id="meter-make" name="meter-make">
+                    <option value="00">00</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="98">98</option>
+                </select>
+            </div>
+            <button class="submit-btn" onclick="submitSelection()">SUBMIT</button>
+            <div id="count-message" class="message-box" style="display:none;"></div>
+        </div>
+
+        <!-- RSSI STATUS Section -->
+        <div class="column">
+            <h1>RSSI STATUS</h1>
+            <div class="dropdown">
+                <label for="rssi-make">RSSI VALUE:</label>
+                <select id="rssi-make" name="rssi-make">
+                    <option value="00">00</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="98">98</option>
+                </select>
+            </div>
+            <button class="submit-btn" onclick="submitRssi()">SUBMIT</button>
+            <div id="rssi-message" class="message-box" style="display:none;"></div>
+        </div>
+    </div>
+
+    <!-- Troubleshooting Protocols Section -->
+    <div class="main-container">
+        <div class="column troubleshoot">
+            <h2>Troubleshooting Protocols</h2>
+            <ul>
+                <li>Check NIC card connections and cables.</li>
+                <li>Ensure RSSI values are within the acceptable range.</li>
+                <li>Restart the system and wait for the NIC to communicate.</li>
+                <li>Contact technical support if issues persist.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function submitSelection() {
+            const errorNumber = document.getElementById('meter-make').value;
+            const messageElement = document.getElementById('count-message');
+
+            let message = '';
+            let message2 = '';
+            switch (errorNumber) {
+                case '00':
+                    message = 'All Good';
+                    break;
+                case '01':
+                    message = 'NIC problem open and insert NIC properly';
+                    break;
+                case '02':
+                    message = ' (   NIC PROBLEM    ), Open and insert NIC properly';
+                    break;
+                case '03':
+                    message = ' ( SIM NOT DETECTED ),  1)Open and Clean SIM & Wait for 15 mins ,   2)After 15 mins if it is still showing the same then change the SIM Card ';
+                    break;
+                case '04':
+                    message = ' ( SIM NOT DETECTED ),  1)Open and Clean SIM & Wait for 15 mins ,   2)After 15 mins if it is still showing the same then change the SIM Card ';
+                    break;
+                case '05':
+                    message = ' ( SIM NOT DETECTED ),  1)Open and Clean SIM & Wait for 15 mins ,   2)After 15 mins if it is still showing the same then change the SIM Card ';
+                    break;
+                case '06':
+                    message = ' ( SIM NOT DETECTED ),  1)Open and Clean SIM & Wait for 15 mins ,   2)After 15 mins if it is still showing the same then change the SIM Card ';
+                    break;
+                case '07':
+                    message = ' ( SIM NOT DETECTED ),  1)Open and Clean SIM & Wait for 15 mins ,   2)After 15 mins if it is still showing the same then change the SIM Card ';
+                    break;
+                case '08':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                case '09':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                 case '10':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                case '11':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                case '12':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                case '13':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                case '14':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                case '15':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                case '16':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                case '17':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                case '18':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+
+                default:
+                    message = `Error code ${errorNumber} encountered. Refer to the troubleshooting guide.`;
+                    break;
+            }
+
+            messageElement.innerHTML = message;
+            messageElement.style.display = 'block';
+        }
+
+        function submitRssi() {
+            const rssiValue = document.getElementById('rssi-make').value;
+            const rssiMessageElement = document.getElementById('rssi-message');
+
+            let message = '';
+            switch (rssiValue) {
+                case '00':
+                    message = 'RSSI levels are optimal. No action required.';
+                    break;
+                case '01':
+                    message = 'Low RSSI detected. Check antenna alignment.';
+                    break;
+                case '02':
+                    message = 'RSSI signal is weak. Verify connection and retry.';
+                    break;
+                default:
+                    message = `RSSI Error Code: ${rssiValue}. Please consult the troubleshooting protocols.`;
+                    break;
+            }
+
+            rssiMessageElement.innerHTML = message;
+            rssiMessageElement.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
