@@ -312,6 +312,11 @@
                 case '18':
                     message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
                     break;
+                 case '98':
+                    message = ' (INTERNAL/HES PORTAL/APN CONFIGURATION PROBLEM), 1)Clean the SIM and NIC Card , Re - insert and Wait for 15 minutes.. 2) Remart it serparetly along with ERR Code ..(CAll and INFROM ) ';
+                    break;
+                
+                
 
                 default:
                     message = `Error code ${errorNumber} encountered. Refer to the troubleshooting guide.`;
@@ -329,13 +334,52 @@
             let message = '';
             switch (rssiValue) {
                 case '00':
-                    message = 'RSSI levels are optimal. No action required.';
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
                     break;
                 case '01':
-                    message = 'Low RSSI detected. Check antenna alignment.';
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
                     break;
                 case '02':
-                    message = 'RSSI signal is weak. Verify connection and retry.';
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
+                    break;
+                case '03':
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
+                    break;
+                case '04':
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
+                    break;
+                case '05':
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
+                    break;
+                case '06':
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
+                    break;
+                case '07':
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
+                    break;
+                case '08':
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
+                    break;
+                case '09':
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
+                    break;
+                case '10':
+                    message = 'No Network area & SIM Defectuve , Open and Clean the SIM & wait for 15 min , After 15 mins - if it is still showing the same then change the SIM CARD';
+                    break;
+                case '11':
+                    message = 'LoW Signal Area  , Meter communicating';
+                    break;
+                case '12':
+                    message = 'LoW Signal Area  , Meter communicating';
+                    break;
+                case '13':
+                    message = 'LoW Signal Area  , Meter communicating';
+                    break;
+                case '14':
+                    message = 'LoW Signal Area  , Meter communicating';
+                    break;
+                case '15':
+                    message = 'All Good ( Meter communicating )';
                     break;
                 default:
                     message = `RSSI Error Code: ${rssiValue}. Please consult the troubleshooting protocols.`;
