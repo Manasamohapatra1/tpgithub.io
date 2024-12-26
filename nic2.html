@@ -262,11 +262,10 @@
                     message = 'NIC problem open and insert NIC properly';
                     break;
                 case '02':
-                    message = ' (   NIC PROBLEM   ), Open and insert NIC properly';
+                    message = ' (   NIC PROBLEM    ), Open and insert NIC properly';
                     break;
                 case '03':
-                    message = ' ( SIM NOT DETECTED ) ';
-                    message2 = ' 1 ) Open and Clean SIM & Wait for 15 mins';
+                    message = ' ( SIM NOT DETECTED ), Open and Clean SIM & Wait for 15 mins ';
                     break;
                 case '04':
                     message = ' ( SIM NOT DETECTED ), Open and Clean SIM & Wait for 15 mins';
@@ -295,7 +294,6 @@
             }
 
             messageElement.innerHTML = message;
-            messageElement.innerHTML = message2;
             messageElement.style.display = 'block';
         }
 
