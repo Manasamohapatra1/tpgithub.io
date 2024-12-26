@@ -253,6 +253,7 @@
             const messageElement = document.getElementById('count-message');
 
             let message = '';
+            let message2 = '';
             switch (errorNumber) {
                 case '00':
                     message = 'All Good';
@@ -264,7 +265,8 @@
                     message = ' (   NIC PROBLEM   ), Open and insert NIC properly';
                     break;
                 case '03':
-                    message = ' ( SIM NOT DETECTED ), 1 ) Open and Clean SIM & Wait for 15 mins , 2 ) After 15 mins if it is still the same then change the SIM card ' ;
+                    message = ' ( SIM NOT DETECTED ) ';
+                    message2 = ' 1 ) Open and Clean SIM & Wait for 15 mins';
                     break;
                 case '04':
                     message = ' ( SIM NOT DETECTED ), Open and Clean SIM & Wait for 15 mins';
@@ -293,6 +295,7 @@
             }
 
             messageElement.innerHTML = message;
+            messageElement.innerHTML = message2;
             messageElement.style.display = 'block';
         }
 
